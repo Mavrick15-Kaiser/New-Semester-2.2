@@ -1,0 +1,30 @@
+#include<iostream>
+#include<cmath>
+#include<iomanip>
+using namespace std;
+double g(double x){
+    return(cos(x)+1)/3;
+}
+int main(){
+    double x0,x1;
+    cout<<"Enter initial guess: ";
+    cin>>x0;
+    if(x0!=3.2){
+        cout << "Invalid guess! Please Enter initial value 3.2" << endl;
+        return 0;
+    }
+    double eps=1e-6;
+    cout<<fixed<<setprecision(3);
+    cout<<"\n";
+    int i;
+    for(i=1;i<=1000;i++){
+        x1=g(x0);
+        cout<<"Iteration "<<i<<" root = "<<x1<<endl;
+        if(fabs(x1-x0)<eps)
+            break;
+        x0=x1;
+    }
+    cout<<"\nFinal Root is: "<<x1<<endl;
+    cout<<"Total Iterations: "<<i<<endl;
+    return 0;
+}
